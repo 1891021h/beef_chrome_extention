@@ -1,0 +1,59 @@
+imgタグ取得プログラム
+	<script type="text/javascript">
+	//<!--
+		// 変数初期化
+		httpRequest = false;
+		
+		// IE6.0以外の「XMLHttpRequest」オブジェクトをサポートしているブラウザ？
+		if(window.XMLHttpRequest) {
+			// 「XMLHttpRequest」オブジェクトをサポートしている場合は下記
+			httpRequest = new XMLHttpRequest();
+			httpRequest.overrideMimeType('text/xml');
+		} else if(window.ActiveXObject) {
+			// IEの場合は下記
+			try {
+				httpRequest = new ActiveXObject('Msxml2.XMLHTTP');
+			} catch (e) {
+				httpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+			}
+		}
+		
+		function request(page) {
+			// 指定がない？
+			if(page == "") {
+				return;
+			}
+			// リクエスト中止
+			httpRequest.abort();
+			// リクエスト初期化
+			httpRequest.open('GET', page, true);
+			// テキストエリア初期化
+			document.getElementById('page_text').value = "";
+			// readyStateの値変更を監視
+			httpRequest.onreadystatechange = function() {
+				// データ受信完了？
+				if(httpRequest.readyState == 4) {
+					// リクエスト成功？
+					if(httpRequest.status == 200) {
+						// HTMLソースコードを文字列で取得
+						var getHtmlSrc = httpRequest.responseText;
+						// HTMLソースコード内のimgタグで囲まれた部分のみを全て抜き出す
+						var getImgTag = getHtmlSrc.match(/<img.*?>/g);
+						// 取得したimgタグを全て書き出す
+						for (var i = 0; i < getImgTag.length; i++) {
+							document.getElementById('page_text').value = document.getElementById('page_text').value + getImgTag[i] + "\n";
+						}
+					}
+				}
+			}
+			// リクエスト発行
+			httpRequest.send(null);
+		}
+	//-->
+	</script>
+	<select onchange="request(this.value);">
+		<option value=""></option>
+		<!-- ここにimgタグを取得するページのURLを登録する -->
+		<option value="https://kuwo-info.github.io/glee/01_transport/forms_tips.html">myHP</option>
+	</select>
+	<textarea id="page_text" style="width: 100%; height: 200px;"></textarea>
