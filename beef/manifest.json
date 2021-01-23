@@ -1,0 +1,20 @@
+{
+    "name": "LMS BEEF extention",
+    "description": "make beef more confortable!",
+    "version": "1.0.2",
+    "manifest_version": 2,
+    "content_scripts": [
+      {
+        "matches": ["https://beef.center.kobe-u.ac.jp/2020/"],
+        "css": ["killnakazono.css"]
+      },
+      {
+        "matches": ["https://beef.center.kobe-u.ac.jp/"],
+        "css": ["killnakazono.css"]
+      },
+      {
+        "matches": ["https://beef.center.kobe-u.ac.jp/*"],
+        "js": ["jquery-3.5.1.min.js","content_script.js"]
+      }
+    ]
+  }
