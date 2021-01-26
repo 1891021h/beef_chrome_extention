@@ -11,7 +11,7 @@
 //     });
 // });
 
-fetch('https://beef.center.kobe-u.ac.jp/2020/my/')
+fetch('https://beef.center.kobe-u.ac.jp/2020/my/?myoverviewtab=timeline',{credentials: 'include'})
   .then(function(response){ return response.text(); })
   .then(text => new DOMParser().parseFromString(text, "text/html"))
   .then(function(text){
