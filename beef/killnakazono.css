@@ -12,3 +12,15 @@
     display:block !important;
     visibility: visible !important;
 }
+
+/* カレンダー */
+.top-cal h3{
+    font-weight: normal !important;
+    font-size: 1rem !important;
+}
+.card-header{
+    padding:0 !important;
+}
+.top-cal .discription > *:not(a){
+    display: none;
+}

@@ -5,16 +5,17 @@
     "manifest_version": 2,
     "content_scripts": [
       {
-        "matches": ["https://beef.center.kobe-u.ac.jp/2020/"],
+        "matches": ["https://beef.center.kobe-u.ac.jp/","https://beef.center.kobe-u.ac.jp/2020/"],
         "css": ["killnakazono.css"]
       },
       {
-        "matches": ["https://beef.center.kobe-u.ac.jp/"],
-        "css": ["killnakazono.css"]
-      },
-      {
-        "matches": ["https://beef.center.kobe-u.ac.jp/*"],
+        "matches": ["https://beef.center.kobe-u.ac.jp/","https://beef.center.kobe-u.ac.jp/2020/"],
         "js": ["content_script.js"]
+      },
+      {
+        "matches": ["https://venture.center.kobe-u.ac.jp/course/view.php?id=86","https://venture.center.kobe-u.ac.jp/course/view.php?id=82","https://venture.center.kobe-u.ac.jp/course/view.php?id=81"],
+        "css":["myStyle.css"],
+        "js": ["venture.js"]
       }
     ]
   }
