@@ -1,0 +1,13 @@
+{
+    "name": "Takeda Report extention",
+    "description": "make takeda-report more confortable!",
+    "version": "1.0.2",
+    "manifest_version": 2,
+    "content_scripts": [
+      {
+        "matches": ["https://www.takedajuku-system.com/t-student-special-training-schedules/search-list"],
+        "css":["killnakazono.css"],
+        "js": ["content_script.js"]
+      }
+    ]
+  }

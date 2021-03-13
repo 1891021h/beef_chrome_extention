@@ -1,0 +1,20 @@
+/* 一番やりたいこと */
+.fc-slats tr td{
+    /* height:0.01px !important; */
+}
+.fc-slats tr:nth-child(-n + 180){
+    /* display: none !important; */
+}
+.fc-axis{
+    /* height:0.01px !important;
+    line-height:0px; */
+}
+.fc-slats table{
+    /* max-width: 200px;
+    background-color: bisque;
+    display:none; 
+    height:0 !important; */
+}
+#calender table,#calender tr,#calender td{
+    /* border: none; */
+}
