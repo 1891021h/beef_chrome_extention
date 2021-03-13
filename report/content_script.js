@@ -11,11 +11,21 @@
 //   target.insertBefore(element,targetChild);
 //   element.innerHTML = upcomingEvent;
 // });
-
-  console.log('先週');
+function preWeek(){
   let target = document.querySelector(".btn-warning").parentNode;
   let targetChild = document.querySelector(".btn-warning");
-  let element = document.createElement("span");
-  element.classList.add("pre-week");
-  target.insertBefore(element,targetChild);
-  element.innerHTML = '<button type=\"button\" class=\"btn\" onclick=\"setDay(\'-7\');\">先週</button>';
+  target.insertAdjacentHTML('afterbegin','<button type=\"button\" class=\"btn btn-primary\" onclick=\"setDay(\'-7\');\">先週</button>');
+}
+
+function removeClass(text){
+  let query = "." + text;
+  let target = document.querySelectorAll(query);
+  target.forEach(function(node){
+    node.classList.remove(text);
+  });
+}
+
+removeClass("btn-primary");
+removeClass("btn-info");
+
+preWeek();

@@ -5,7 +5,7 @@
     "manifest_version": 2,
     "content_scripts": [
       {
-        "matches": ["https://www.takedajuku-system.com/t-student-special-training-schedules/search-list"],
+        "matches": ["https://www.takedajuku-system.com/t-student-special-training-schedules/*"],
         "css":["killnakazono.css"],
         "js": ["content_script.js"]
       }
