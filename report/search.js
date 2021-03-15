@@ -1,4 +1,9 @@
-fetch('https://www.takedajuku-system.com/t-students/search-list/02',{credentials: 'include'})
+/******* 
+ * 2021 version.
+ * Ryo TAKAYANAGI, Nishinomiya-Kitaguchi-Kou, Hyogo Pref., JP
+*/
+
+fetch('https://www.takedajuku-system.com/t-students/search-list/02')
 .then(function(response){ return response.text(); })
 .then(text => new DOMParser().parseFromString(text, "text/html"))
 .then(function(text){
@@ -12,8 +17,8 @@ fetch('https://www.takedajuku-system.com/t-students/search-list/02',{credentials
     stList.push([stNumber,stName,stFamilyName,stFirstName]);
   })
   setStList(stList);
-  var param = location.search;
-  console.log(getParam('TStudents%5Blast_name%5D'));
+  const param = location.search;
+  //console.log(getParam('TStudents%5Blast_name%5D'));
 });
 
 function setStList(stList){
@@ -22,11 +27,18 @@ function setStList(stList){
   target.removeChild(targetInput);
   // console.log(target);
   // console.log(targetInput);
-  let targetChild = document.querySelector("#tstudents-last-name");
+  //let targetChild = document.querySelector("#tstudents-last-name");
   let element = document.createElement("select");
   element.classList.add("form-control");
   element.setAttribute('name','TStudents[last_name]');
   element.setAttribute('id',"tstudents-last-name");
+
+  let optionNow = document.createElement('option');
+  stNow = getParam('TStudents%5Blast_name%5D');
+  optionNow.setAttribute('value', stNow);
+  optionNow.innerHTML = stNow;
+  element.appendChild(optionNow);
+  
   for(let i = 0; i < stList.length; i++){
     let option = document.createElement('option');
     option.setAttribute('value', stList[i][2]);
@@ -85,3 +97,9 @@ function getParam(name, url) {
 
 
 // https://www.takedajuku-system.com/t-student-special-training-schedules/search-list?TStudents%5Blast_name%5D=&TStudents%5Bfirst_name%5D=&TStudentSpecialTrainingSchedules%5Bpresence_or_absence_cd%5D=&TStudentSpecialTrainingSchedules%5Btest_start_date_from%5D=2021%2F03%2F15+00%3A00&TStudentSpecialTrainingSchedules%5Btest_start_date_to%5D=2021%2F03%2F15+23%3A59&search=%E6%A4%9C%E7%B4%A2%E3%81%99%E3%82%8B#tab3
+
+const today = new Date();
+let lastMonth = ( '00' + today.getMonth() ).slice( -2 );
+let month = ( '00' + today.getMonth() + 1 ).slice( -2 );
+let day = ( '00' + today.getDate() ).slice( -2 );
+let enc = encodeURI('別所');
