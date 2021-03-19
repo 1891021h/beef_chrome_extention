@@ -54,5 +54,5 @@ fetch(replaced)
     let preSt = text.querySelector('.table.table-striped.table-hover tbody tr:nth-last-child(2) a').getAttribute('href');
     let preUrl = 'https://www.takedajuku-system.com/' + preSt;
     let space = document.querySelector('.content form');
-    space.insertAdjacentHTML('beforebegin','<div class="button"><a href="' + preUrl +'">まずは先週のレポートに宿題達成率・テスト結果を入力してください。</a></div>');
+    space.insertAdjacentHTML('beforebegin','<div class="button"><a hr( ﾟДﾟ)ef="' + preUrl +'">まずは先週のレポートに宿題達成率・テスト結果を入力してください( ﾟДﾟ)</a></div>');
 });
