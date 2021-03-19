@@ -1,13 +1,17 @@
 {
     "name": "Takeda Report extention",
     "description": "make takeda-report more confortable!",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "manifest_version": 2,
     "content_scripts": [
       {
-        "matches": ["https://www.takedajuku-system.com/t-student-special-training-schedules/search-list"],
+        "matches": ["https://www.takedajuku-system.com/t-student-special-training-schedules/search-list","https://www.takedajuku-system.com/t-student-special-training-schedules/search-list?*"],
         "css":["search.css"],
         "js": ["search.js"]
+      },
+      {
+        "matches": ["https://www.takedajuku-system.com/t-reports/edit/*","https://www.takedajuku-system.com/t-reports/add/*"],
+        "js": ["report.js"]
       }
     ]
   }
