@@ -15,7 +15,8 @@
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/view/*"],
-        "js": ["pdfmake.min.js","vfs_fonts.js","view.js"]
+        "css": ["view.css"],
+        "js": ["view.js"]
       }
     ]
   }
