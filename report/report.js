@@ -46,6 +46,9 @@ let ltrName = dataList[6].split(' ');
 replaced = url.replace('{FROMMONTH}',fromMonth).replace('{FROMDAY}',fromDay).replace('{TOMONTH}',toMonth).replace('{TODAY}',toDay).replace('{TOTIME}',toTime).replace('{STLASTNAME}',stName[0]).replace('{STFIRSTNAME}',stName[1]).replace('{LTRLASTNAME}',ltrName[0]).replace('{LTRFIRSTNAME}',ltrName[1]);
 console.log(replaced);
 
+
+let space = document.querySelector('.content form');
+
 //検索結果にアクセス
 fetch(replaced)
 .then(function(response){ return response.text(); })
@@ -53,6 +56,8 @@ fetch(replaced)
 .then(function(text){
     let preSt = text.querySelector('.table.table-striped.table-hover tbody tr:nth-last-child(2) a').getAttribute('href');
     let preUrl = 'https://www.takedajuku-system.com' + preSt;
-    let space = document.querySelector('.content form');
-    space.insertAdjacentHTML('beforebegin','<div class="button"><a href="' + preUrl +'">まずは先週のレポートに宿題達成率・テスト結果を入力してください( ﾟДﾟ)</a></div>');
+    space.insertAdjacentHTML('beforebegin','<div>まず先週のレポートに宿題達成・テスト結果を入力すること</div><a href="' + preUrl +'" class="btn-animation-02"><span>先週のレポートへ</span></a>');
 });
+
+//フォーム
+//space.insertAdjacentHTML('afterbegin','<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeQFUR-_DfJTJlqGvphfAassAGty2_PcxccITFMWg4IOFT7vA/viewform?embedded=true" width="800" height="300" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>');

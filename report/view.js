@@ -1,12 +1,6 @@
-//スマートアラート
-let body = document.querySelector('body');
-let script = document.createElement('script');
-script.setAttribute('src','https://unpkg.com/sweetalert/dist/sweetalert.min.js');
-body.appendChild(script);
-
 let button = document.createElement('div');
 button.setAttribute('style', 'text-align:right;');
-button.innerHTML = '<button id="create">情報送信</button>';
+button.innerHTML = '<button id="create">チェック</button>';
 let target = document.querySelector('.content .clearfix');
 target.insertBefore(button,target.querySelector('h3'));
 
@@ -25,7 +19,11 @@ document.getElementById("create").addEventListener("click", function() {
     }
 
     console.log(elist);
-    if(!elist == ''){
+    if(elist == ''){
+        reportButtons.forEach(function(e){
+            e.classList.remove('hidden-btn');
+        });
+    } else {
         window.alert(elist.join('\n'));
     }
 });
