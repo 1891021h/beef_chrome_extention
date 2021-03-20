@@ -12,6 +12,10 @@
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/edit/*","https://www.takedajuku-system.com/t-reports/add/*"],
         "js": ["report.js"]
+      },
+      {
+        "matches": ["https://www.takedajuku-system.com/t-reports/view/*"],
+        "js": ["pdfmake.min.js","vfs_fonts.js","view.js"]
       }
     ]
   }
