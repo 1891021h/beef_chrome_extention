@@ -16,7 +16,7 @@
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/view/*"],
-        "css": ["view.css"],
+        "css": ["view.css","print.css"],
         "js": ["view.js"]
       }
     ]
