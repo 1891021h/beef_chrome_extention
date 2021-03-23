@@ -1,7 +1,7 @@
 {
     "name": "Takeda Report extention",
     "description": "make takeda-report more confortable!",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "manifest_version": 2,
     "content_scripts": [
       {

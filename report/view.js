@@ -9,6 +9,8 @@ reportButtons.forEach(function(e){
     e.classList.add('hidden-btn');
 });
 
+console.log(getOtherValues());
+
 document.getElementById("create").addEventListener("click", function() {
     const values = getHomeworkValues();//値取得
     let elist = [];
@@ -75,4 +77,28 @@ function getHomeworkValues(){
 
     */
    return values;
+}
+
+// 検索する情報の取得
+function getOtherValues(){
+    let col4 = document.querySelector('#formset-info .col-sm-4').querySelectorAll('.form-group');
+    let col3 = document.querySelector('#formset-info .col-sm-3').querySelectorAll('.form-group');
+    let col5 = document.querySelector('#formset-info .col-sm-5 .form-group:nth-child(2)').querySelectorAll('.col-sm-6:nth-child(2)');
+
+    let dataList = [];
+    for(let i = 1; i < col4.length; i++){
+        let value = col4[i].querySelector('.form-control-static').innerText;
+        dataList.push(value);
+    }
+    for(let i = 0; i < col3.length; i++){
+        let value = col3[i].querySelector('.form-control-static').innerText;
+        dataList.push(value);
+    }
+    col5.forEach(function(node){
+        time = node.querySelector('.form-control-static').innerText;
+        dataList.push(time);
+    });
+
+    return dataList;
+
 }
