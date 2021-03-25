@@ -1,0 +1,49 @@
+<form id="custom_form" target="dummy_send_target">
+    <input type="text" name="entry.1043867152">
+    <input type="text" name="entry.1385859732">
+    <input type="text" name="entry.154293683">
+    <button type="submit">送信</button>
+</form>
+<p id="words_of_thanks">
+    アンケートにご協力いただき、ありがとうございました！
+</p>
+<style>
+    #words_of_thanks {
+        display: none;
+    }
+</style>
+<script>
+    function get_textbox_value(name) {
+        const element = document.querySelector(`input[type=text][name="${name}"]`);
+        if(element.value) {
+            return element.value;
+        } else {
+            return ""
+        }
+    }
+
+    function ask_before_changing_page(event) {
+        event.preventDefault();
+        event.returnValue = "";
+    }
+
+    document.getElementById("custom_form").addEventListener("submit", function() {
+        const dummy_send_target = document.createElement("iframe");
+        dummy_send_target.style.display = "none";
+        dummy_send_target.name = "dummy_send_target";
+        document.getElementById("custom_form").appendChild(dummy_send_target);
+
+        const form_iframe = document.createElement("iframe");
+        form_iframe.src = encodeURI(`https://docs.google.com/forms/u/0/d/e/1FAIpQLScb5fguhWD92wSlbe2murPAZdFzbIobIB_PWdWo_RWbjpCVaQ/formResponse?entry.1043867152=${get_textbox_value("entry.1043867152")}&entry.1385859732=${get_textbox_value("entry.1385859732")}&entry.154293683=${get_textbox_value("entry.154293683")}&submit=Submit`);
+        form_iframe.style.display = "none";
+        document.getElementById("custom_form").appendChild(form_iframe);
+
+        form_iframe.addEventListener("load", function() {
+            document.getElementById("custom_form").remove();
+            document.getElementById("words_of_thanks").style.display = "block";
+            window.removeEventListener("beforeunload", ask_before_changing_page, false);
+        });
+    });
+
+    window.addEventListener("beforeunload", ask_before_changing_page);
+</script>

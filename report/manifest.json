@@ -11,13 +11,13 @@
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/edit/*","https://www.takedajuku-system.com/t-reports/add/*"],
-        "css":["report.css"],
-        "js": ["report.js"]
+        "css":["report.css","dialog.css"],
+        "js": ["report.js","dialog.js"]
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/view/*"],
-        "css": ["view.css","print.css"],
-        "js": ["view.js"]
+        "css": ["view.css","print.css","dialog.css"],
+        "js": ["view.js","dialog.js"]
       }
     ]
   }
