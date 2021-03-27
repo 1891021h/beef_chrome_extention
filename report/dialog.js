@@ -2,11 +2,8 @@ document.body.appendChild(function(){
     sc = document.createElement("script");
     const code = function(){
 
-        const dialog = document.querySelector('.homework-dialog-content');
-        const left = dialog.children[0];
         const textarea = document.querySelector('#request_test_text');
         textarea.classList.add("hidden-textarea");
-        // textarea.insertAdjacentHTML('beforebegin','<div class"request-controler"><button id="controler-button">ガイド表示</;button></div>');
         textarea.insertAdjacentHTML('afterend','<div id="controler-text"></div>');
         
         //ガイド書くところ
@@ -18,30 +15,68 @@ document.body.appendChild(function(){
         editButoons.forEach(function(node){
             node.addEventListener("click",function(){
                 textarea.classList.add("hidden-textarea");
-                area.classList.add("hidden-textarea");       
+                area.classList.add("hidden-area");       
             });
         });
-        
-        //数学
-        function math(currentText){
-            if(currentText == '［改訂４］初めから始める 数学B'){
-                area.innerHTML = '生徒が解答する問題を講師が指定してください。';
-                textarea.classList.remove("hidden-textarea");//テキストエリアを表示
-                area.classList.remove("hidden-textarea");//テキスト表示     
+
+        //テスト
+        function testRequestControl(){
+            let subjectId = document.querySelector("#m_subject_id").value;
+            console.log(`科目IDは${subjectId}`);
+            let currentText = document.querySelector('.select2-selection__rendered').innerText;
+            if(subjectId == 12 || subjectId == 13){
+                area.innerHTML = 'この科目は理系科目です。生徒が解答する問題を講師が指定してください。';
+                textarea.classList.remove("hidden-textarea");
+                area.classList.remove("hidden-area");  
+            } else {
+                console.log("この科目は理系科目ではありません。");
+                eachReferenceBook(currentText);
             }
         }
 
-        //テスト
-        function testRequestControl(subjectId){
-            const currentText = document.querySelector('.select2-selection__rendered').innerText;
-            if(subjectId == '12'){
-                area.innerHTML = 'この科目は数学です．';
-                textarea.classList.remove("hidden-textarea");//テキストエリアを表示
-                area.classList.remove("hidden-textarea");//テキスト表示       
-            } else{
-                area.innerHTML = 'この科目は数学ではありません．';
-                area.classList.remove("hidden-textarea");//テキスト表示  
+        function createSelect(array){
+            const existenseSelect = document.createElement("select");
+            existenseSelect.setAttribute("id","existense-select");
+            existenseSelect.addEventListener("change",function(){
+                textarea.value = document.getElementById("existense-select").value;
+            });
+            for (const val of array){
+                const option = document.createElement("option");
+                option.innerText = val;
+                existenseSelect.appendChild(option);
             }
+            return existenseSelect;
+        }
+
+        //参考書各論
+        const eachReferenceBook = (currentText) => {
+            switch (currentText) {
+              case "【改訂新版】システム英単語Basic":
+                createPullDown(["あり","なし"]);
+                break;
+              case "英語長文レベル別３":
+                area.appendChild(createSelect(["あり","なし"]));
+                textarea.value = document.getElementById("existense-select").value;
+                area.classList.remove("hidden-textarea");
+                break;
+              case "英文読解入門 基本はここだ！":
+                area.appendChild(createSelect(["あり","なし","すこし"]));
+                textarea.value = document.getElementById("existense-select").value;
+                area.classList.remove("hidden-textarea");
+                break;
+              default:
+                area.innerHTML = "";
+                area.appendChild(createSelect(["なし"]));
+                textarea.value = document.getElementById("existense-select").value;
+                area.classList.remove("hidden-textarea");
+            }
+          };
+        
+        //プルダウンつくる
+        const createPullDown = (array) => {
+            area.innerHTML = "";
+            area.appendChild(createSelect(array));
+            area.classList.remove("hidden-area");
         }
 
         //上書きされる関数
@@ -79,9 +114,7 @@ document.body.appendChild(function(){
                     let button = '<input type="button" class="btn btn-primary" name="history" value="宿題履歴" onClick="showHomeworkHistoryDialog(' + data['id'] + ');">';
                     $('#reference_book_limit').text(limit_message);
                     $('#homework-history-dialog-button').html(button);
-                    const subjectId = document.querySelector("#m_subject_id").getAttribute("value");
-                    //testRequestControl();
-                    console.log(subjectId);
+                    testRequestControl();
                 })
                 // 通信失敗時
                 .fail( function(data) {

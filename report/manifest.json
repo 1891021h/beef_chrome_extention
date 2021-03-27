@@ -1,7 +1,7 @@
 {
-    "name": "Takeda Report extention",
+    "name": "Takeda Report Extension",
     "description": "make takeda-report more confortable!",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "manifest_version": 2,
     "content_scripts": [
       {
@@ -12,12 +12,12 @@
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/edit/*","https://www.takedajuku-system.com/t-reports/add/*"],
         "css":["report.css","dialog.css"],
-        "js": ["report.js","dialog.js"]
+        "js": ["report.js","dialog.js","js/googleForm.js"]
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/view/*"],
-        "css": ["view.css","print.css","dialog.css"],
-        "js": ["view.js","dialog.js"]
+        "css": ["view.css","print.css"],
+        "js": ["view.js"]
       }
     ]
   }
