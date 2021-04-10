@@ -1,23 +1,27 @@
 {
     "name": "Takeda Report Extension",
-    "description": "make takeda-report more confortable!",
-    "version": "1.0.5",
+    "description": "make takeda-report more comfortable!",
+    "version": "1.2.0",
     "manifest_version": 2,
     "content_scripts": [
       {
         "matches": ["https://www.takedajuku-system.com/t-student-special-training-schedules/search-list","https://www.takedajuku-system.com/t-student-special-training-schedules/search-list?*"],
-        "css":["search.css"],
-        "js": ["search.js"]
+        "css":["css/search.css"],
+        "js": ["js/search.js"]
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/edit/*","https://www.takedajuku-system.com/t-reports/add/*"],
-        "css":["report.css","dialog.css"],
-        "js": ["report.js","dialog.js","js/googleForm.js"]
+        "css":["css/report.css","css/dialog.css"],
+        "js": ["js/report.js","js/dialog.js","js/googleForm.js","js/english.js"]
       },
       {
         "matches": ["https://www.takedajuku-system.com/t-reports/view/*"],
-        "css": ["view.css","print.css"],
-        "js": ["view.js"]
+        "css": ["css/view.css","css/print.css"],
+        "js": ["js/view.js"]
+      },
+      {
+        "matches": ["https://www.takedajuku-system.com/t-reports/add/*"],
+        "js": ["js/add.js"]
       }
     ]
   }

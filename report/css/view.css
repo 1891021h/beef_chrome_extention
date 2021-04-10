@@ -1,0 +1,6 @@
+/* .hidden-btn{
+    display: none;
+} */
+#formset-comment-info .form-control-static {
+    white-space: pre-wrap;
+}

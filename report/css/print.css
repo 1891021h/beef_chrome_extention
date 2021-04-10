@@ -1,0 +1,8 @@
+@media print{
+    body{
+        background-color: bisque;
+    }
+    #header,h1, .content .pull-right, #create{
+        display: none;
+    }
+}

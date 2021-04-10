@@ -1,3 +1,6 @@
 .hidden-textarea, .hidden-area{
     display: none;
 }
+.super-hidden-area{
+    display: none !important;
+}

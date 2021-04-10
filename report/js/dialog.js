@@ -24,13 +24,13 @@ document.body.appendChild(function(){
             let subjectId = document.querySelector("#m_subject_id").value;
             console.log(`科目IDは${subjectId}`);
             let currentText = document.querySelector('.select2-selection__rendered').innerText;
-            if(subjectId == 12 || subjectId == 13){
+            if(subjectId == 12 || subjectId == 13 || subjectId == 14 || subjectId == 15){
                 area.innerHTML = 'この科目は理系科目です。生徒が解答する問題を講師が指定してください。';
                 textarea.classList.remove("hidden-textarea");
                 area.classList.remove("hidden-area");  
             } else {
                 console.log("この科目は理系科目ではありません。");
-                eachReferenceBook(currentText);
+                eachReferenceBook(currentText,subjectId);
             }
         }
 
@@ -49,26 +49,11 @@ document.body.appendChild(function(){
         }
 
         //参考書各論
-        const eachReferenceBook = (currentText) => {
-            switch (currentText) {
-              case "【改訂新版】システム英単語Basic":
-                createPullDown(["あり","なし"]);
-                break;
-              case "英語長文レベル別３":
-                area.appendChild(createSelect(["あり","なし"]));
-                textarea.value = document.getElementById("existense-select").value;
-                area.classList.remove("hidden-textarea");
-                break;
-              case "英文読解入門 基本はここだ！":
-                area.appendChild(createSelect(["あり","なし","すこし"]));
-                textarea.value = document.getElementById("existense-select").value;
-                area.classList.remove("hidden-textarea");
-                break;
-              default:
-                area.innerHTML = "";
-                area.appendChild(createSelect(["なし"]));
-                textarea.value = document.getElementById("existense-select").value;
-                area.classList.remove("hidden-textarea");
+        const eachReferenceBook = (currentText,subjectId) => {
+            if (subjectId == 1) {
+                eachReferenceBookEnglish(currentText);
+            } else {
+                textarea.classList.remove("hidden-textarea");
             }
           };
         
@@ -76,6 +61,31 @@ document.body.appendChild(function(){
         const createPullDown = (array) => {
             area.innerHTML = "";
             area.appendChild(createSelect(array));
+            area.classList.remove("hidden-area");
+        }
+
+        //版が古い
+        const oldVersion = () => {
+            area.innerHTML = "";
+            const msg = document.createElement('div');
+            msg.innerText = ('版が古い参考書を選択しています。再検索して最新の版を選んでください。')
+            area.appendChild(msg);
+            area.classList.remove("hidden-area");
+        }
+        //使用禁止
+        const pleaseUseAlternative = (alt) => {
+            area.innerHTML = "";
+            const msg = document.createElement('div');
+            msg.innerText = (`まぎらわしい選択肢は使用禁止とさせて頂いております。お手数をおかけし申し訳ございませんが，「${alt}」をご使用ください。`)
+            area.appendChild(msg);
+            area.classList.remove("hidden-area");
+        }
+        //ルートが古すぎる
+        const oldCurriculum = () => {
+            area.innerHTML = "";
+            const warning = document.createElement('div');
+            warning.innerText = ('古いルートの参考書です。')
+            area.appendChild(warning);
             area.classList.remove("hidden-area");
         }
 
