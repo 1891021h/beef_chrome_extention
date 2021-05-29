@@ -129,14 +129,65 @@ document.body.appendChild(function(){
                     break;
                 case "大岩英文法英語長文編"://区別のしようがない
                     createPullDown(["あり","なし"]);
-                    break;    
+                    break;
+                case "英文読解の透視図":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "ポレポレ 英文読解プロセス50":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英会話問題のトレーニング":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英語整序問題精選600":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英作文ハイトレ　自由英作文編":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英作文ハイトレ　和文英訳編":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英作文ハイトレ和文英訳編 (例題)":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英作文ハイトレ 和文英訳編（語法文例・テーマ別文例）":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英作文ハイトレ 和文英訳編":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英文和訳演習 入門篇":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英文和訳演習 基礎篇":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英文和訳演習 中級篇":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英文和訳演習 上級篇":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "短期で攻める 英語整序問題200":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "石井雅勇の「前置詞」":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "最難関大への英作文":
+                    createPullDown(["あり","なし"]);
+                    break;
+                case "英文解釈要約精講[新装版](Exercise)":
+                    createPullDown(["あり","なし"]);
+                    break;
               default:
                 area.innerHTML = "";
-                area.appendChild(createSelect(["なし"]));
+                area.appendChild(createSelect(["あり","なし"]));
                 textarea.value = document.getElementById("existense-select").value;
-                const outOf = document.createElement('div');
-                outOf.innerText = ('その参考書はルート外か，テスト作成非対応です。');
-                area.appendChild(outOf);
+                // const outOf = document.createElement('div');
+                // outOf.innerText = ('その参考書はルート外です。');
+                // area.appendChild(outOf);
                 area.classList.remove("hidden-area");
             }
           };

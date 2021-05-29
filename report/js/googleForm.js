@@ -1,20 +1,20 @@
-const currentSubject = document.querySelector("#formset-info .col-sm-3 .col-sm-8").innerText;
+const currentSubject = document.querySelector("#formset-info .col-sm-3 .col-sm-8").innerText;//科目を取得する
 
-const dateFormForTeachers = document.querySelector('#t_report_test_start_date');
-dateFormForTeachers.classList.add("super-hidden-area");
-dateFormForTeachers.insertAdjacentHTML('beforebegin','<input id="my-date-form" type="datetime-local" name="example" min="2021-04-01T00:00" max="2022-03-31T23:59">');
+const dateFormForTeachers = document.querySelector('#t_report_test_start_date');//既存のフォームを取得
+dateFormForTeachers.classList.add("super-hidden-area");//既存のフォームを隠す（display:none/dialog.css）
+dateFormForTeachers.insertAdjacentHTML('beforebegin','<input id="my-date-form" type="datetime-local" name="example" min="2021-04-01T00:00" max="2022-03-31T23:59">');//その上に新しいフォーム作成
 dateFormForTeachers.parentNode.parentNode.classList.remove('col-sm-4');
 
 const undecidedCol = document.querySelector('#undecided_flg_checkbox').parentNode.parentNode;
 //undecidedCol.classList.remove('col-sm-4');
 
-const myDateForm = document.querySelector('#my-date-form');
+const myDateForm = document.querySelector('#my-date-form');//自作フォームをパス取得
 myDateForm.addEventListener('change',function () {
     dateFormForTeachers.value = myDateForm.value;
-});
-myDateForm.value = dateFormForTeachers.value.replace(/\//g,'-').replace(' ','T');
+});//自作フォームにchangeイベントを追加。変更したらオリジナルフォームの値を変更
+myDateForm.value = dateFormForTeachers.value.replace(/\//g,'-').replace(' ','T');//自作フォームの値はオリジナルフォームの値にする。ただし置換。/を-に，空白をTに。
 
-const sendGoogleForm = () => {
+const sendGoogleForm = () => {//Googleフォーム送信処理（詳細割愛）
     const nextDateWill = myDateForm.value;
     if(!(comparedNextDateSoFar == nextDateWill)) {
         const dummy_send_target = document.createElement("iframe");
@@ -42,7 +42,11 @@ const sendGoogleForm = () => {
 const nextDateSoFar = document.querySelector("#formset-info .col-sm-5 .form-group:last-child div:nth-child(2) div:last-child p").innerText;
 const comparedNextDateSoFar = `${nextDateSoFar.slice(0,10)}${nextDateSoFar.slice(13)}`.replace(/\//g,'-').replace(' ','T');
 
-const saveButton = document.querySelector(".pull-right.btn-group").querySelector("button:last-child");
-saveButton.addEventListener("click",sendGoogleForm);
+const saveButton = document.querySelector(".pull-right.btn-group").querySelector("button:last-child");//保存ボタンをパスで取得
+saveButton.addEventListener("click",sendGoogleForm);//保存ボタンにクリックイベントを追加
 
-document.body.insertAdjacentHTML("beforeEnd","<form id=\"custom_form\" target=\"dummy_send_target\" style=\"display:none;\"><button type=\"submit\">送信</button></form>");
+document.body.insertAdjacentHTML("beforeEnd","<form id=\"custom_form\" target=\"dummy_send_target\" style=\"display:none;\"><button type=\"submit\">送信</button></form>");//ダミーボタン
+
+// document.querySelector("#formset-school-info > div > div:nth-child(1) > div.col-sm-10 > div > label:nth-child(1)").classList.add('borther');
+// document.querySelector("#formset-school-info > div > div:nth-child(1) > div.col-sm-10 > div > label:nth-child(3)").classList.add('borther');
+document.querySelector("#formset-school-info > div > div:nth-child(1) > div.col-sm-10 > div > div:nth-child(2)").classList.add('enough');

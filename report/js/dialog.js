@@ -3,18 +3,18 @@ document.body.appendChild(function(){
     const code = function(){
 
         const textarea = document.querySelector('#request_test_text');
-        textarea.classList.add("hidden-textarea");
+        //textarea.classList.add("hidden-textarea");
         textarea.insertAdjacentHTML('afterend','<div id="controler-text"></div>');
         
         //ガイド書くところ
-        let area = document.querySelector('#controler-text');
+        const area = document.querySelector('#controler-text');
         
-        //編集ボタン
+        //編集ボタンズ
         const editButoons = document.getElementsByName('edit');
         //編集し始めたら一旦テキストエリアとガイドは非表示
         editButoons.forEach(function(node){
             node.addEventListener("click",function(){
-                textarea.classList.add("hidden-textarea");
+                //textarea.classList.add("hidden-textarea");
                 area.classList.add("hidden-area");       
             });
         });
@@ -24,9 +24,9 @@ document.body.appendChild(function(){
             let subjectId = document.querySelector("#m_subject_id").value;
             console.log(`科目IDは${subjectId}`);
             let currentText = document.querySelector('.select2-selection__rendered').innerText;
-            if(subjectId == 12 || subjectId == 13 || subjectId == 14 || subjectId == 15){
+            if(subjectId == 12 || subjectId == 13 || subjectId == 14 || subjectId == 15){//数学，理科
                 area.innerHTML = 'この科目は理系科目です。生徒が解答する問題を講師が指定してください。';
-                textarea.classList.remove("hidden-textarea");
+                // textarea.classList.remove("hidden-textarea");
                 area.classList.remove("hidden-area");  
             } else {
                 console.log("この科目は理系科目ではありません。");
@@ -88,6 +88,17 @@ document.body.appendChild(function(){
             area.appendChild(warning);
             area.classList.remove("hidden-area");
         }
+
+        /*章などのプルダウンをつくる
+        const underRange = document.querySelector("#range");
+        underRange.insertAdjacentHTML('afterend','<div id = "chapter-etc">ここ</div>');
+        const chapterEtsArea = document.querySelector("#chapter-etc");
+        const chapterEtc = (array) => {
+            chapterEtsArea.innerHTML = "";
+            chapterEtsArea.appendChild(createSelect(array));
+        }
+
+        chapterEtc(["章","番号"]);*/
 
         //上書きされる関数
         function getReferenceBookById(id) {
