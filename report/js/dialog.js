@@ -14,7 +14,7 @@ document.body.appendChild(function(){
         //編集し始めたら一旦テキストエリアとガイドは非表示
         editButoons.forEach(function(node){
             node.addEventListener("click",function(){
-                //textarea.classList.add("hidden-textarea");
+                textarea.classList.add("hidden-textarea");
                 area.classList.add("hidden-area");       
             });
         });
